@@ -1,16 +1,23 @@
-
+# Description: This program will calculate the median value of house listings from a zillow api call
 import http.client
+import json
 
-conn = http.client.HTTPSConnection("realty-mole-property-api.p.rapidapi.com")
+conn = http.client.HTTPSConnection("zillow56.p.rapidapi.com")
 
 headers = {
     'X-RapidAPI-Key': "e375110e3cmshaf77ee007d8b4f6p1b083fjsn1e170d0c3e46",
-    'X-RapidAPI-Host': "realty-mole-property-api.p.rapidapi.com"
+    'X-RapidAPI-Host': "zillow56.p.rapidapi.com"
     }
 
-conn.request("GET", "/zipCodes/29611", headers=headers)
-
+conn.request("GET", "/search?location=houston%2C%20tx", headers=headers)
+j = 0
 res = conn.getresponse()
 data = res.read()
-
-print(data.decode("utf-8"))
+foo = json.loads(data)
+bar = foo.get("results")
+price = bar[0].get("price")
+for i in range (len(bar)):
+    price = price + bar[i].get("price")
+    j += 1
+average = price/j
+print(average)
