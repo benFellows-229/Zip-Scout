@@ -9,7 +9,7 @@ headers = {
     'X-RapidAPI-Host': "zillow56.p.rapidapi.com"
     }
 
-conn.request("GET", "/search?location=houston%2C%20tx", headers=headers)
+conn.request("GET", "/search?location=", headers=headers)
 j = 0
 res = conn.getresponse()
 data = res.read()
