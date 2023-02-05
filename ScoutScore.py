@@ -26,14 +26,13 @@ def handle_request():
         text = "MadisonWI"
 
 
-
+    conn = http.client.HTTPSConnection("zillow56.p.rapidapi.com")
 
     headers = {
-        'X-RapidAPI-Key': "e375110e3cmshaf77ee007d8b4f6p1b083fjsn1e170d0c3e46",
+        'X-RapidAPI-Key': "1d5c1f2561msh0af3408496e2673p1a6e6ajsnc23c8c34bca3",
         'X-RapidAPI-Host': "zillow56.p.rapidapi.com"
         }
-    conn = http.client.HTTPSConnection("zillow56.p.rapidapi.com")
-    conn.request("GET", "/search?location=houston%2C%20tx", headers=headers)
+    conn.request("GET", "/search?location=Houston", headers=headers)
     j = 0
     res = conn.getresponse()
     data = res.read()
