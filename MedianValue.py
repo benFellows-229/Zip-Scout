@@ -15,7 +15,7 @@ res = conn.getresponse()
 data = res.read()
 foo = json.loads(data)
 bar = foo.get("results")
-price = bar[0].get("price")
+price = 0
 for i in range (len(bar)):
     price = price + bar[i].get("price")
     j += 1
